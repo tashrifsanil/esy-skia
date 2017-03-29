@@ -24,6 +24,7 @@ declare_args() {
   skia_use_mesa = false
   skia_use_piex = !is_win
   skia_use_zlib = true
+  skia_use_experimental_svg_model = true
 
   skia_android_serial = ""
   skia_enable_android_framework_defines = false
@@ -532,6 +533,32 @@ optional("xml") {
   ]
 }
 
+optional("experimental_svg_model") {
+  enabled = skia_use_experimental_svg_model
+
+  sources = [
+    "experimental/svg/model/SkSVGAttribute.cpp",
+    "experimental/svg/model/SkSVGAttributeParser.cpp",
+    "experimental/svg/model/SkSVGCircle.cpp",
+    "experimental/svg/model/SkSVGClipPath.cpp",
+    "experimental/svg/model/SkSVGContainer.cpp",
+    "experimental/svg/model/SkSVGDOM.cpp",
+    "experimental/svg/model/SkSVGEllipse.cpp",
+    "experimental/svg/model/SkSVGLine.cpp",
+    "experimental/svg/model/SkSVGLinearGradient.cpp",
+    "experimental/svg/model/SkSVGNode.cpp",
+    "experimental/svg/model/SkSVGPath.cpp",
+    "experimental/svg/model/SkSVGPoly.cpp",
+    "experimental/svg/model/SkSVGRect.cpp",
+    "experimental/svg/model/SkSVGRenderContext.cpp",
+    "experimental/svg/model/SkSVGSVG.cpp",
+    "experimental/svg/model/SkSVGShape.cpp",
+    "experimental/svg/model/SkSVGStop.cpp",
+    "experimental/svg/model/SkSVGTransformableNode.cpp",
+    "experimental/svg/model/SkSVGValue.cpp",
+  ]
+}
+
 component("skia") {
   public_configs = [ ":skia_public" ]
   configs += skia_library_configs
@@ -560,6 +587,7 @@ component("skia") {
     ":typeface_freetype",
     ":webp",
     ":xml",
+    ":experimental_svg_model",
   ]
 
   # This file (and all GN files in Skia) are designed to work with an

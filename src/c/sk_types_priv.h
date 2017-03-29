@@ -36,6 +36,8 @@
 #include "SkTime.h"
 #include "SkCamera.h"
 
+#include "../../experimental/svg/model/SkSVGDOM.h"
+
 #include "sk_path.h"
 #include "sk_paint.h"
 #include "sk_shader.h"
@@ -336,6 +338,10 @@ static inline const SkStream* AsStream(const sk_stream_t* cstream) {
 
 static inline SkStream* AsStream(sk_stream_t* cstream) {
     return reinterpret_cast<SkStream*>(cstream);
+}
+
+static inline SkStream& AsStream(sk_stream_t& cstream) {
+    return reinterpret_cast<SkStream&>(cstream);
 }
 
 static inline sk_stream_t* ToStream(SkStream* cstream) {
@@ -720,6 +726,18 @@ static inline sk_matrix44_t* ToMatrix44(SkMatrix44* p) {
 
 static inline const sk_matrix44_t* ToMatrix44(const SkMatrix44* p) {
     return reinterpret_cast<const sk_matrix44_t*>(p);
+}
+
+static inline const SkSVGDOM* AsSvgDom(const sk_svgdom_t* p) {
+    return reinterpret_cast<const SkSVGDOM*>(p);
+}
+
+static inline SkSVGDOM* AsSvgDom(sk_svgdom_t* p) {
+    return reinterpret_cast<SkSVGDOM*>(p);
+}
+
+static inline sk_svgdom_t* ToSvgDom(SkSVGDOM* p) {
+    return reinterpret_cast<sk_svgdom_t*>(p);
 }
 
 static inline void from_c(const sk_matrix_t* cmatrix, SkMatrix* matrix) {
