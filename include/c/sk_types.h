@@ -130,28 +130,28 @@ typedef enum {
 
 typedef struct sk_surfaceprops_t sk_surfaceprops_t;
 
-typedef struct {
+typedef struct sk_point_t {
     float   x;
     float   y;
 } sk_point_t;
 
 typedef sk_point_t sk_vector_t;
 
-typedef struct {
+typedef struct sk_irect_t {
     int32_t left;
     int32_t top;
     int32_t right;
     int32_t bottom;
 } sk_irect_t;
 
-typedef struct {
+typedef struct sk_rect_t {
     float   left;
     float   top;
     float   right;
     float   bottom;
 } sk_rect_t;
 
-typedef struct {
+typedef struct sk_matrix_t {
     float scaleX, skewX, transX;
     float skewY, scaleY, transY;
     float persp0, persp1, persp2;
@@ -279,28 +279,28 @@ typedef enum {
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-typedef struct {
+typedef struct sk_point3_t {
     float   x;
     float   y;
     float   z;
 } sk_point3_t;
 
-typedef struct {
+typedef struct sk_ipoint_t {
     int32_t   x;
     int32_t   y;
 } sk_ipoint_t;
 
-typedef struct {
+typedef struct sk_size_t {
     float   w;
     float   h;
 } sk_size_t;
 
-typedef struct {
+typedef struct sk_isize_t {
     int32_t   w;
     int32_t   h;
 } sk_isize_t;
 
-typedef struct {
+typedef struct sk_fontmetrics_t {
     uint32_t fFlags;
     float    fTop;
     float    fAscent;
@@ -503,7 +503,7 @@ typedef enum {
     NO_SK_CODEC_ZERO_INITIALIZED,
 } sk_codec_zero_initialized_t;
 
-typedef struct {
+typedef struct sk_codec_options_t {
     sk_codec_zero_initialized_t fZeroInitialized;
     sk_irect_t* fSubset;
     int fFrameIndex;
@@ -627,7 +627,7 @@ typedef enum {
     SDF_SK_MASK_FORMAT,
 } sk_mask_format_t;
 
-typedef struct {
+typedef struct sk_mask_t {
     uint8_t*          fImage;
     sk_irect_t        fBounds;
     uint32_t          fRowBytes;
@@ -655,13 +655,13 @@ typedef struct gr_glinterface_t gr_glinterface_t;
 typedef void (*gr_gl_func_ptr)(void);
 typedef gr_gl_func_ptr (*gr_gl_get_proc)(void* ctx, const char* name);
 
-typedef struct {
+typedef struct gr_gl_textureinfo_t {
     unsigned int fTarget;
     unsigned int fID;
     unsigned int fFormat;
 } gr_gl_textureinfo_t;
 
-typedef struct {
+typedef struct gr_gl_framebufferinfo_t {
     unsigned int fFBOID;
     unsigned int fFormat;
 } gr_gl_framebufferinfo_t;
@@ -763,7 +763,7 @@ typedef enum {
     FIXED_COLOR_SK_LATTICE_RECT_TYPE,
 } sk_lattice_recttype_t;
 
-typedef struct {
+typedef struct sk_lattice_t {
     const int* fXDivs;
     const int* fYDivs;
     const sk_lattice_recttype_t* fRectTypes;
@@ -802,7 +802,7 @@ typedef enum {
     ZERO_PIXELS_SK_BITMAP_ALLOC_FLAGS = 1 << 0,
 } sk_bitmap_allocflags_t;
 
-typedef struct {
+typedef struct sk_time_datetime_t {
     int16_t  fTimeZoneMinutes;
     uint16_t fYear;
     uint8_t  fMonth;
@@ -813,7 +813,7 @@ typedef struct {
     uint8_t  fSecond;
 } sk_time_datetime_t;
 
-typedef struct {
+typedef struct sk_document_pdf_metadata_t {
     sk_string_t*        fTitle;
     sk_string_t*        fAuthor;
     sk_string_t*        fSubject;
@@ -827,7 +827,7 @@ typedef struct {
     int                 fEncodingQuality;
 } sk_document_pdf_metadata_t;
 
-typedef struct {
+typedef struct sk_imageinfo_t {
     sk_colorspace_t* colorspace;
     int32_t          width;
     int32_t          height;
@@ -841,7 +841,7 @@ typedef enum {
     RESTORE_PREVIOUS_SK_CODEC_ANIMATION_DISPOSAL_METHOD   = 3,
 } sk_codecanimation_disposalmethod_t;
 
-typedef struct {
+typedef struct sk_codec_frameinfo_t {
     int fRequiredFrame;
     int fDuration;
     bool fFullyReceived;
@@ -905,7 +905,7 @@ typedef enum {
     INVERT_LIGHTNESS_SK_HIGH_CONTRAST_CONFIG_INVERT_STYLE,
 } sk_highcontrastconfig_invertstyle_t;
 
-typedef struct {
+typedef struct sk_highcontrastconfig_t {
     bool fGrayscale;
     sk_highcontrastconfig_invertstyle_t fInvertStyle;
     float fContrast;
@@ -925,7 +925,7 @@ typedef enum {
                                        PAETH_SK_PNGENCODER_FILTER_FLAGS,
 } sk_pngencoder_filterflags_t;
 
-typedef struct {
+typedef struct sk_pngencoder_options_t {
     sk_pngencoder_filterflags_t fFilterFlags;
     int fZLibLevel;
     void* fComments;
@@ -942,7 +942,7 @@ typedef enum {
     BLEND_ON_BLACK_SK_JPEGENCODER_ALPHA_OPTION,
 } sk_jpegencoder_alphaoption_t;
 
-typedef struct {
+typedef struct sk_jpegencoder_options_t {
     int fQuality;
     sk_jpegencoder_downsample_t fDownsample;
     sk_jpegencoder_alphaoption_t fAlphaOption;
@@ -953,7 +953,7 @@ typedef enum {
     LOSSLESS_SK_WEBPENCODER_COMPTRESSION,
 } sk_webpencoder_compression_t;
 
-typedef struct {
+typedef struct sk_webpencoder_options_t {
     sk_webpencoder_compression_t fCompression;
     float fQuality;
 } sk_webpencoder_options_t;
@@ -979,7 +979,7 @@ typedef enum {
 typedef struct sk_textblob_t sk_textblob_t;
 typedef struct sk_textblob_builder_t sk_textblob_builder_t;
 
-typedef struct {
+typedef struct sk_textblob_builder_runbuffer_t {
     void* glyphs;
     void* pos;
     void* utf8text;
