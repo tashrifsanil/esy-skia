@@ -317,7 +317,9 @@ opts("hsw") {
   if (is_win) {
     cflags = [ "/arch:AVX2" ]
   } else {
-    cflags = [ "-march=haswell" ]
+    # cflags = [ "-march=haswell" ]
+    # TODO: Is this the problem?
+    cflags = []
   }
 
   # Oddly, clang-cl doesn't recognize this as a valid flag.
