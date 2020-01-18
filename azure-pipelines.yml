@@ -5,10 +5,31 @@
 
 name: $(Build.SourceVersion)
 jobs:
-- job: Linux	
+- job: LinuxUbuntu16
+  displayName: 'Linux (Ubuntu 16.04)'
   timeoutInMinutes: 0	
   pool:
     vmImage: 'Ubuntu 16.04'	
+
+  variables:
+    STAGING_DIRECTORY: /home/vsts/STAGING	
+    STAGING_DIRECTORY_UNIX: /home/vsts/STAGING	
+    ESY__CACHE_INSTALL_PATH: /home/vsts/.esy/3_____________________________________________________________________/i	
+    ESY__CACHE_SOURCE_TARBALL_PATH: /home/vsts/.esy/source/i	
+    # ESY__NPM_ROOT: /opt/hostedtoolcache/node/8.14.0/x64/lib/node_modules/esy	
+
+  steps:
+  - script: sudo apt-get install -y mesa-common-dev libegl1-mesa-dev mesa-utils mesa-utils-extra nasm
+  - template: .ci/use-node.yml	
+  - template: .ci/restore-build-cache.yml	
+  - template: .ci/esy-build-steps.yml	
+  - template: .ci/publish-build-cache.yml	
+
+- job: LinuxUbuntu18
+  displayName: 'Linux (Ubuntu 18.04)'
+  timeoutInMinutes: 0	
+  pool:
+    vmImage: 'Ubuntu 18.04'	
 
   variables:
     STAGING_DIRECTORY: /home/vsts/STAGING	
