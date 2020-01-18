@@ -9,7 +9,7 @@ jobs:
   displayName: 'Linux (Ubuntu 16.04)'
   timeoutInMinutes: 0	
   pool:
-    vmImage: 'Ubuntu 16.04'	
+    vmImage: 'ubuntu-16.04'	
 
   variables:
     STAGING_DIRECTORY: /home/vsts/STAGING	
@@ -29,7 +29,7 @@ jobs:
   displayName: 'Linux (Ubuntu 18.04)'
   timeoutInMinutes: 0	
   pool:
-    vmImage: 'Ubuntu 18.04'	
+    vmImage: 'ubuntu-18.04'	
 
   variables:
     STAGING_DIRECTORY: /home/vsts/STAGING	
