@@ -380,6 +380,7 @@ config("warnings") {
       # clang 10 fixes
       "-Wno-anon-enum-enum-conversion",
       "-Wno-sizeof-array-div",
+      "-Wno-extra-semi-stmt", # same as https://github.com/revery-ui/esy-skia/pull/15
     ]
 
     if (target_cpu == "arm" && is_ios) {
