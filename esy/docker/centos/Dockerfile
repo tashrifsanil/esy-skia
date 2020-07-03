@@ -23,7 +23,7 @@ RUN npm install --global --unsafe-perm=true esy@0.5.8
 
 RUN yum -y install epel-release
 RUN yum -y remove git
-RUN rpm -U https://centos7.iuscommunity.org/ius-release.rpm
+RUN yum -y install https://repo.ius.io/ius-release-el7.rpm
 RUN yum -y install git2u
 
 RUN yum -y install nasm
