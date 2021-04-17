@@ -4,7 +4,7 @@ steps:
   - task: PublishBuildArtifacts@1
     displayName: '[Release]'
     inputs:
-        pathToPublish: '_release'
+        pathToPublish: '_esy/default/store/b/'
         artifactName: 'release-$(Agent.OS)'
         parallel: true
         parallelCount: 8
