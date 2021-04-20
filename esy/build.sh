@@ -46,4 +46,5 @@ else
     
     # Add the SVG object files to the Skia archive
     ar r $cur__target_dir/out/Static/libskia.a $cur__target_dir/out/Static/obj/experimental/svg/model/*.o
+    ranlib $cur__target_dir/out/Static/libskia.a
 fi
