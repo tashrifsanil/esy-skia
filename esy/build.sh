@@ -19,12 +19,8 @@ ln -s third_party/externals/gyp tools/gyp
 if [[ $OS == "windows" ]]
 then
     WINDOWS_PYTHON_PATH="$(cygpath -w $(which $PYTHON_BINARY))"
-    bin/gn gen $cur__target_dir/out/Shared --script-executable="$WINDOWS_PYTHON_PATH" --args='is_debug=false skia_enable_tools=true' || exit -1
-    ninja.exe -C $cur__target_dir/out/Shared skia skia.h experimental_svg_model
-    find $cur__target_dir/out/Shared
-    mv $cur__target_dir/out/Shared/libskia.dll $cur__target_dir/out/Shared/skia.dll # TODO this might not be required once we merge upstream
-    esy/gendef.exe - $cur__target_dir/out/Shared/skia.dll > $cur__target_dir/out/Shared/skia.def
-    x86_64-W64-mingw32-dlltool.exe -D $cur__target_dir/out/Shared/skia.dll -d $cur__target_dir/out/Shared/skia.def -A -l $cur__target_dir/out/Shared/libskia.a
+    bin/gn gen $cur__target_dir/out/Static --script-executable="$WINDOWS_PYTHON_PATH" --args='is_debug=false skia_enable_tools=true' || exit -1
+    ninja.exe -C $cur__target_dir/out/Static skia skia.h experimental_svg_model
 else
 
     CC=clang
