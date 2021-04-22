@@ -11,7 +11,7 @@ cp $cur__root/experimental/svg/model/*.h $cur__install/include/svg/model/
 
 if [[ $OS == 'windows' ]]
 then
-    cp $cur__target_dir/out/Static/skia.lib $cur__lib
+    cp $cur__target_dir/out/Static/skia.lib $cur__lib/libskia.a
 else
     cp $cur__target_dir/out/Static/libskia.a $cur__lib
     cp $cur__target_dir/out/Static/libskiasvg.a $cur__lib
