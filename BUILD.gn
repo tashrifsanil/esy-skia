@@ -809,6 +809,7 @@ optional("xml") {
 
 optional("svg") {
   enabled = esy_skia_enable_svg
+  public_defines = [ "ESY_SKIA_SVG" ]
   sources = [
     "experimental/svg/model/SkSVGAttribute.cpp",
     "experimental/svg/model/SkSVGAttributeParser.cpp",
