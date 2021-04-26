@@ -11,6 +11,7 @@
 
 #ifdef ESY_SKIA_SVG
 #include "SkSVGDOM.h"
+#include "SkSVGNode.h"
 #endif
 
 #include "sk_svg.h"
