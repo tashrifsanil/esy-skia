@@ -9,6 +9,10 @@
 
 #include "SkSVGCanvas.h"
 
+#ifdef ESY_SKIA_SVG
+#include "SkSVGDOM.h"
+#endif
+
 #include "sk_svg.h"
 
 #include "sk_types_priv.h"
