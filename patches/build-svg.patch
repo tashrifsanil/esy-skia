@@ -1,5 +1,5 @@
 diff --git a/BUILD.gn b/BUILD.gn
-index 057b8b0d89..0c53cd23d8 100644
+index 057b8b0d89..3026df64a0 100644
 --- a/BUILD.gn
 +++ b/BUILD.gn
 @@ -22,6 +22,7 @@ declare_args() {
@@ -10,12 +10,13 @@ index 057b8b0d89..0c53cd23d8 100644
    skia_use_fontconfig = is_linux
    skia_use_freetype = is_android || is_fuchsia || is_linux
    skia_use_icu = !is_fuchsia && !is_ios && !is_win  # TODO: Windows
-@@ -806,6 +807,38 @@ optional("xml") {
+@@ -806,6 +807,39 @@ optional("xml") {
    ]
  }
  
 +optional("svg") {
 +  enabled = esy_skia_enable_svg
++  public_defines = [ "ESY_SKIA_SVG" ]
 +  sources = [
 +    "experimental/svg/model/SkSVGAttribute.cpp",
 +    "experimental/svg/model/SkSVGAttributeParser.cpp",
@@ -49,7 +50,7 @@ index 057b8b0d89..0c53cd23d8 100644
  if (skia_enable_gpu && skia_generate_workarounds) {
    action("workaround_list") {
      script = "tools/build_workaround_header.py"
-@@ -861,6 +894,7 @@ component("skia") {
+@@ -861,6 +895,7 @@ component("skia") {
      ":ssse3",
      ":webp",
      ":xml",
