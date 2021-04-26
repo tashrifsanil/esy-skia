@@ -165,6 +165,10 @@ config("skia_private") {
     include_dirs += [ "$skia_llvm_path/include" ]
   }
 
+  if (esy_skia_enable_svg) {
+    include_dirs += [ "experimental/svg/model" ]
+  }
+
   defines = [ "SK_GAMMA_APPLY_TO_A8" ]
   if (is_android) {
     defines += [
