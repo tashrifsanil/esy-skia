@@ -42,7 +42,6 @@ float sk_svgdom_get_container_height(sk_svgdom_t *svgdom) {
 }
 
 sk_svgdom_t *sk_svgdom_create_from_stream(sk_stream_t *stream) {
-    std::unique_ptr<SkStream> skstream(AsStream(stream));
-    return ToSVGDOM(SkSVGDOM::MakeFromStream(*skstream).release());
+    return ToSVGDOM(SkSVGDOM::MakeFromStream(*AsStream(stream)).release());
 }
 #endif
