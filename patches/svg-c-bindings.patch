@@ -1,13 +1,21 @@
 diff --git a/src/c/sk_svg.cpp b/src/c/sk_svg.cpp
-index 1a89349784..d54974352c 100644
+index 1a89349784..c31d5d4fc8 100644
 --- a/src/c/sk_svg.cpp
 +++ b/src/c/sk_svg.cpp
-@@ -42,7 +42,6 @@ float sk_svgdom_get_container_height(sk_svgdom_t *svgdom) {
+@@ -42,7 +42,14 @@ float sk_svgdom_get_container_height(sk_svgdom_t *svgdom) {
  }
  
  sk_svgdom_t *sk_svgdom_create_from_stream(sk_stream_t *stream) {
 -    std::unique_ptr<SkStream> skstream(AsStream(stream));
 -    return ToSVGDOM(SkSVGDOM::MakeFromStream(*skstream).release());
 +    return ToSVGDOM(SkSVGDOM::MakeFromStream(*AsStream(stream)).release());
++}
++
++void sk_svgdom_ref(const sk_svgdom_t *svg) {
++    SkSafeRef(AsSVGDOM(svg));
++}
++
++void sk_svgdom_unref(const sk_svgdom_t *svg) {
++    SkSafeUnref(AsSVGDOM(svg));
  }
  #endif
