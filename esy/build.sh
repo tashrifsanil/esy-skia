@@ -18,10 +18,16 @@ $PYTHON_BINARY tools/git-sync-deps
 ln -s third_party/externals/gyp tools/gyp
 if [[ $OS == "windows" ]]
 then
-    WINDOWS_PYTHON_PATH="$(cygpath -w $(which $PYTHON_BINARY))"
-    bin/gn gen $cur__target_dir/out/Shared --script-executable="$WINDOWS_PYTHON_PATH" --args='is_debug=false is_component_build=true esy_skia_enable_svg=true' || exit -1
-    ninja.exe -C $cur__target_dir/out/Shared
-    mv $cur__target_dir/out/Shared/libskia.dll $cur__target_dir/out/Shared/skia.dll
+    # If we are told to build from sratch, do so.
+    if [[ -z "$ESY_SKIA_SCRATCH" ]]
+    then
+        WINDOWS_PYTHON_PATH="$(cygpath -w $(which $PYTHON_BINARY))"
+        bin/gn gen $cur__target_dir/out/Shared --script-executable="$WINDOWS_PYTHON_PATH" --args='is_debug=false is_component_build=true esy_skia_enable_svg=true' || exit -1
+        ninja.exe -C $cur__target_dir/out/Shared
+        mv $cur__target_dir/out/Shared/libskia.dll $cur__target_dir/out/Shared/skia.dll
+    else
+        cp prebuilt/windows/skia.dll $cur__target_dir/out/Shared/skia.dll
+    fi
     esy/gendef.exe - $cur__target_dir/out/Shared/skia.dll > $cur__target_dir/out/Shared/skia.def
     x86_64-W64-mingw32-dlltool.exe -D $cur__target_dir/out/Shared/skia.dll -d $cur__target_dir/out/Shared/skia.def -A -l $cur__target_dir/out/Shared/libskia.a
 else
