@@ -26,6 +26,7 @@ then
         ninja.exe -C $cur__target_dir/out/Shared
         mv $cur__target_dir/out/Shared/libskia.dll $cur__target_dir/out/Shared/skia.dll
     else
+        mkdir -p $cur__target_dir/out/Shared/ 
         cp prebuilt/windows/skia.dll $cur__target_dir/out/Shared/skia.dll
     fi
     esy/gendef.exe - $cur__target_dir/out/Shared/skia.dll > $cur__target_dir/out/Shared/skia.def
