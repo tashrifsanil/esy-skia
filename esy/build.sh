@@ -16,7 +16,7 @@ fi
 
 if [[ $OS == "windows" ]]
 then
-    # If we are told to build from sratch, do so.
+    # If we are told to build from scratch, do so.
     if [[ -n "$ESY_SKIA_SCRATCH" ]]
     then
         $PYTHON_BINARY tools/git-sync-deps
